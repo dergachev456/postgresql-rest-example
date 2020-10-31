@@ -1,0 +1,13 @@
+.statistics-page {
+    text-align: center;
+    padding-bottom: 50px;
+
+    &__wrapper {
+        background:rgb(247, 247, 247);
+        min-height: 100vh;
+    }
+
+    &__back {
+        margin: 30px 0;
+    }
+}

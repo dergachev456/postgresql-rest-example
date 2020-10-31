@@ -1,0 +1,24 @@
+.create-order-page {
+    background: rgb(247, 247, 247);
+    min-height: 100vh;
+
+    &__title {
+        font-size: 55px;
+        text-align: center;
+        color: #009879;
+        padding-top: 20px;
+    }
+    &__close {
+        padding: 20px 60px;
+        font-size: 20px;
+        margin-left: 15px;
+    }
+    &__buttons {
+        margin: 30px auto;
+        display: flex;
+        justify-content: center;
+    }
+    &__confirm {
+        margin-right: 15px;
+    }
+}

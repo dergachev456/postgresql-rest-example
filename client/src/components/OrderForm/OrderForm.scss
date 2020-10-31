@@ -1,0 +1,123 @@
+.order-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    &__main {
+        margin: 0 auto;
+        max-width: 500px;
+        width: 100%;
+    }
+    
+    &__status-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding-left: 30px;
+        margin-top: 20px;
+    }
+
+    &__status-title {
+        font-size: 30px;
+        color: #009879;
+    }
+
+    &__input-group {
+        display: flex;
+        margin-top: 25px;
+        width: 100%;
+
+        &:focus-within {
+            label {
+                background: #009879;
+                border-color: #009879;
+                color: #dff3d9;
+            }
+
+            input {
+
+                border-color: #009879;
+            }
+        }
+
+        label {
+            display: inline-block;
+            border: 2px solid #dff3d9;
+            border-right: 2px #dff3d9;
+            border-radius: 6px 0 0 6px;
+            padding: 1.1em 1.4em;
+            background: #dff3d9;
+            transition: 0.3s ease;
+            width: 30%;
+            color: #009879;
+            padding-left: 1.5em;
+
+        }
+
+        input {
+            border: 2px solid #dff3d9;
+            border-left: 2px solid #dff3d9;
+            border-radius: 0 6px 6px 0;
+            transition: 0.3s ease;
+            width: 70%;
+            outline: none;
+            color: #009879;
+            padding-left: 1.5em;
+            font-size: 16px;
+        }
+    }
+}
+
+.custom-input {
+    margin-top: 10px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 26px;
+    color: #009879;
+    padding-left: 35px;
+    user-select: none;
+
+    & input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+    &:hover input~.checkmark {
+        background-color: #009879;
+    }
+
+    & input:checked~.checkmark {
+        background-color: #009879;
+    }
+
+    & input:checked~.checkmark:after {
+        display: block;
+    }
+    & .checkmark:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 5px;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #dff3d9;
+        border-radius: 50%;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+    
+
+}

@@ -1,0 +1,46 @@
+.custom-table {
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+    max-width: 1000px;
+    border-radius: 8px;
+
+    &__head {
+        display: flex;
+        justify-content: space-between;
+        background-color: #009879;
+        border-radius: 8px;
+    }
+
+    &__head-cell {
+        width: 100%;
+        max-width: 300px;
+        color: #ffffff;
+        padding: 1em;
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__main-row {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #dddddd;
+
+        &:nth-of-type(even) {
+            background-color: #dff3d9;
+        }
+    }
+
+    &__main-cell {
+        justify-content: center;
+        align-self: center;
+        padding: 1em;
+        width: 100%;
+        max-width: 300px;
+        display: flex;
+    }
+}

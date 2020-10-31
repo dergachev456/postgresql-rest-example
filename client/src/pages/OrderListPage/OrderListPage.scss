@@ -1,0 +1,19 @@
+.orderlist-page {
+    text-align: center;
+    padding-bottom: 50px;
+
+    &__wrapper {
+        background:rgb(247, 247, 247);
+        min-height: 100vh;
+    }
+    &__buttons {
+        a {
+            margin: 40px 20px;
+            font-size: 16px;
+        }
+    }
+
+    &__statistics {
+        padding: 20px 60px;
+    }
+}

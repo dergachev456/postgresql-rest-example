@@ -5,12 +5,16 @@ import OrderForm from '../../components/OrderForm/OrderForm';
 import './EditOrderPage.scss'
 import { connect } from 'react-redux';
 import { editOrder } from '../../store/actions/orderActionsCreator';
+import { handleValidationError } from '../../store/actions/mainActionsCreator';
 
-const EditOrderPage = ({ editOrder, history, match,
-    main: { orderName, orderPhoneNumber, orderAddress, orderStatus, orderIdError } }) => {
+const EditOrderPage = ({ editOrder, handleValidationError, history, match,
+    main: { orderName, orderPhoneNumber, orderAddress, orderStatus, orderIdError, validationError } }) => {
     function edit() {
         if (orderStatus === 'confirmed' && (!orderName || !orderPhoneNumber || !orderAddress)) {
-            window.alert('Fill in all fields please')
+            handleValidationError(true);
+            setTimeout(() => {
+                handleValidationError(false);
+            }, 2000);
         } else {
             editOrder(match.params.id, orderName, orderPhoneNumber, orderAddress, orderStatus)
             history.push('/');
@@ -23,12 +27,15 @@ const EditOrderPage = ({ editOrder, history, match,
                 <CustomButton onClick={edit} className="edit-order-page__confirm">Edit</CustomButton>
                 <CustomLink className="edit-order-page__close" path="/">Close</CustomLink>
             </div>
+            {
+                validationError && <span className="validation-error">All fields are required</span>
+            }
         </>
     )
 
     const errorText = <h2 className="edit-order-page__error">There is no such order</h2>
     const resultContent = orderIdError ? errorText : content;
-    
+
     return (
         <div className="edit-order-page">
             <h2 className="edit-order-page__title">Edit order #{match.params.id}</h2>
@@ -40,5 +47,5 @@ const EditOrderPage = ({ editOrder, history, match,
 export default connect(state => ({
     main: state.main,
 }), {
-    editOrder
+    editOrder, handleValidationError
 })(EditOrderPage);

@@ -1,5 +1,5 @@
 import {
-    HANDLE_ORDER_NAME, HANDLE_ORDER_PHONE_NUMBER, 
+    HANDLE_ORDER_NAME, HANDLE_ORDER_PHONE_NUMBER, HANDLE_VALIDATION_ERROR,
     HANDLE_ORDER_ADDRESS, HANDLE_ORDER_STATUS, HANDLE_ORDERID_ERROR
 } from '../constants';
 
@@ -25,5 +25,11 @@ export const handleOrderStatus = (value) => ({
 
 export const handleOrderIdError = (value) => ({
     type: HANDLE_ORDERID_ERROR,
+    payload: value 
+});
+
+
+export const handleValidationError = (value) => ({
+    type: HANDLE_VALIDATION_ERROR,
     payload: value 
 });

@@ -1,0 +1,12 @@
+.not-found-page {
+    text-align: center;
+    &__wrapper {
+        background:rgb(247, 247, 247);
+        min-height: 100vh;
+    }
+
+    &__title {
+        font-size: 65px;
+        padding-top: 5%;
+    }
+}

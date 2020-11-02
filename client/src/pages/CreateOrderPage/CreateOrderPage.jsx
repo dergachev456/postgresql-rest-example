@@ -6,11 +6,16 @@ import OrderForm from '../../components/OrderForm/OrderForm'
 import { getRandonId } from '../../helpers'
 import './CreateOrderPage.scss'
 import { createOrder } from '../../store/actions/orderActionsCreator';
+import { handleValidationError } from '../../store/actions/mainActionsCreator';
 
-const CreateOrderPage = ({ createOrder, history, main: { orderName, orderPhoneNumber, orderAddress, orderStatus } }) => {
+const CreateOrderPage = ({ createOrder, handleValidationError, history,
+    main: { orderName, orderPhoneNumber, orderAddress, orderStatus, validationError } }) => {
     function create() {
         if (orderStatus === 'confirmed' && (!orderName || !orderPhoneNumber || !orderAddress)) {
-            window.alert('Fill in all fields please')
+            handleValidationError(true);
+            setTimeout(() => {
+                handleValidationError(false);
+            }, 2000);
         } else {
             const id = getRandonId();
             createOrder(id, orderName, orderPhoneNumber, orderAddress, orderStatus)
@@ -26,6 +31,9 @@ const CreateOrderPage = ({ createOrder, history, main: { orderName, orderPhoneNu
                 <CustomButton onClick={create} className="create-order-page__confirm">Create</CustomButton>
                 <CustomLink className="create-order-page__close" path="/">Close</CustomLink>
             </div>
+            {
+                validationError && <span className="validation-error">All fields are required</span>
+            }
         </div>
     )
 }
@@ -33,5 +41,5 @@ const CreateOrderPage = ({ createOrder, history, main: { orderName, orderPhoneNu
 export default connect(state => ({
     main: state.main,
 }), {
-    createOrder
+    createOrder, handleValidationError
 })(CreateOrderPage);

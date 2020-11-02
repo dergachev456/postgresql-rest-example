@@ -1,5 +1,5 @@
 import {
-    HANDLE_ORDER_NAME, HANDLE_ORDER_PHONE_NUMBER,
+    HANDLE_ORDER_NAME, HANDLE_ORDER_PHONE_NUMBER, HANDLE_VALIDATION_ERROR,
     HANDLE_ORDER_ADDRESS, HANDLE_ORDER_STATUS, HANDLE_ORDERID_ERROR
 } from '../constants';
 
@@ -8,7 +8,8 @@ const initialState = {
     orderPhoneNumber: '',
     orderAddress: '',
     orderStatus: '',
-    orderIdError: false
+    orderIdError: false,
+    validationError: false
 };
 
 const main = (state = initialState, action) => {
@@ -37,6 +38,11 @@ const main = (state = initialState, action) => {
             return {
                 ...state,
                 orderIdError: action.payload
+            }
+        case HANDLE_VALIDATION_ERROR:
+            return {
+                ...state,
+                validationError: action.payload
             }
         default:
             return state;
